@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import numeral from 'numeral';
 import numerales from 'numeral/locales/es'
-
 numeral.locale('es');
 
 const ExpenseListItem = ({id, description, amount, createdAt}) => (
