@@ -43,7 +43,7 @@ test('should set note on input change', () => {
 });
 
 test('should set amount if valid input', () => {
-    const value = '13.33';
+    const value = '13,33';
     const wrapper = shallow(<ExpenseForm />);
     wrapper.find('input').at(1).simulate('change', {
         target: { value }
@@ -52,7 +52,7 @@ test('should set amount if valid input', () => {
 });
 
 test('should not set amount if invalid input', () => {
-    const value = '13.333';
+    const value = '13,333';
     const wrapper = shallow(<ExpenseForm />);
     wrapper.find('input').at(1).simulate('change', {
         target: { value }
@@ -76,16 +76,15 @@ test('should call onSubmit prop for valid form submission', () => {
 });
   
 test('should set new date on date change', () => {
-    const now = moment();
+    const now = moment(1552067368000);
     const wrapper = shallow(<ExpenseForm />);
-    wrapper.find('SingleDatePicker').prop('onDateChange')(now);
+    wrapper.find('withStyles(SingleDatePicker)').prop('onDateChange')(now);
     expect(wrapper.state('createdAt')).toEqual(now);
 });
 
 test('should change calendarFocused on focus change', () => {
     const focused = true;
     const wrapper = shallow(<ExpenseForm />);
-    wrapper.find('SingleDatePicker').prop('onFocusChange')({ focused});
+    wrapper.find('withStyles(SingleDatePicker)').prop('onFocusChange')({ focused });
     expect(wrapper.state('calendarFocused')).toBe(focused);
 });
-  
